@@ -113,7 +113,9 @@ img {
 .menu-item:not(:last-child) {
   margin-right: 40px;
 }
-
+.menu-item:first-child {
+  color: var(--pressed-state);
+}
 .menu-link {
   display: block;
   position: relative;
@@ -131,13 +133,17 @@ img {
 .menu-link:focus {
   color: var(--pressed-state);
 }
-.menu-link:hover::after,
-.menu-link:hover::after {
+.menu-studio {
+  color: var(--pressed-state);
+}
+.menu-studio::after,
+.menu-studio::after {
   position: absolute;
   content: '';
   display: block;
   width: 48px;
   height: 4px;
+  left: 0;
   margin-left: auto;
   margin-right: auto;
   bottom: -1px;
