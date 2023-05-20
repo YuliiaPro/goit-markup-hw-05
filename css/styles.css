@@ -116,8 +116,9 @@ img {
 
 .menu-link {
   display: block;
+  position: relative;
   padding-top: 24px;
-  padding-bottom: 20px;
+  padding-bottom: 24px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -130,14 +131,17 @@ img {
 .menu-link:focus {
   color: var(--pressed-state);
 }
-.menu-item:hover::after,
-.menu-item:hover::after {
+.menu-link:hover::after,
+.menu-link:hover::after {
+  position: absolute;
   content: '';
   display: block;
   width: 48px;
   height: 4px;
   margin-left: auto;
   margin-right: auto;
+  bottom: -1px;
+  border-radius: 2px;
   background-color: var(--pressed-state);
 }
 .address {
@@ -359,7 +363,7 @@ img {
   border-radius: 4px;
   align-items: center;
   justify-content: center;
-  transition: border var(--transition-duration-and-function),
+  transition: border-color var(--transition-duration-and-function),
     color var(--transition-duration-and-function);
 }
 .customers-icon {
@@ -403,7 +407,7 @@ img {
   border-radius: 4px;
   transition: color var(--transition-duration-and-function),
     background-color var(--transition-duration-and-function),
-    border var(--transition-duration-and-function),
+    border-color var(--transition-duration-and-function),
     box-shadow var(--transition-duration-and-function);
 }
 .portfolio-list {
@@ -530,8 +534,12 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 408px;
-  height: 584px;
+  min-height: 576px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
   background-color: var(--modal-color);
+  transition: transform var(--transition-duration-and-function);
 }
 .modal-close-btn {
   position: absolute;
@@ -542,11 +550,22 @@ img {
   justify-content: center;
   width: 24px;
   height: 24px;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
+  cursor: pointer;
   background: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+  transition: background-color var(--transition-duration-and-function),
+    border var(--transition-duration-and-function);
+}
+.modal-close-icon {
+  transition: fill var(--transition-duration-and-function);
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: var(--pressed-state);
+  border: none;
+  fill: var(--main-color);
 }
 .is-hidden {
   opacity: 0;
