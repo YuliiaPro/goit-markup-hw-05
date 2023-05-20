@@ -8,10 +8,12 @@
   --text: #434455;
   --light: #f4f4fd;
   --main-color: #ffffff;
+  --modal-color: #fcfcfc;
   --primary-brand: #4d5ae5;
   --pressed-state: #404bbf;
   --accent-color: #31d0aa;
   --helper-text: #8e8f99;
+  --transition-duration-and-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
   background-color: var(--main-color);
@@ -89,6 +91,8 @@ img {
   text-transform: uppercase;
   color: var(--primary-brand);
   margin-right: 76px;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 .logo {
   font-family: 'Raleway', sans-serif;
@@ -113,17 +117,28 @@ img {
 .menu-link {
   display: block;
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 20px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--dark);
+  transition: color var(--transition-duration-and-function);
 }
 .menu-link:hover,
 .menu-link:focus {
   color: var(--pressed-state);
+}
+.menu-item:hover::after,
+.menu-item:hover::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--pressed-state);
 }
 .address {
   font-style: normal;
@@ -143,6 +158,7 @@ img {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--text);
+  transition: color var(--transition-duration-and-function);
 }
 .address-link:hover,
 .address-link:focus {
@@ -201,6 +217,7 @@ img {
   margin-top: 48px;
   margin-left: auto;
   margin-right: auto;
+  transition: background-color var(--transition-duration-and-function);
 }
 
 .order-service-btn:hover,
@@ -315,6 +332,7 @@ img {
   height: 40px;
   border-radius: 50%;
   background-color: var(--primary-brand);
+  transition: background-color var(--transition-duration-and-function);
 }
 .social-icon {
   fill: var(--light);
@@ -341,6 +359,8 @@ img {
   border-radius: 4px;
   align-items: center;
   justify-content: center;
+  transition: border var(--transition-duration-and-function),
+    color var(--transition-duration-and-function);
 }
 .customers-icon {
   display: flex;
@@ -381,6 +401,10 @@ img {
   min-width: 78px;
   border: 1px solid #e7e9fc;
   border-radius: 4px;
+  transition: color var(--transition-duration-and-function),
+    background-color var(--transition-duration-and-function),
+    border var(--transition-duration-and-function),
+    box-shadow var(--transition-duration-and-function);
 }
 .portfolio-list {
   display: flex;
@@ -411,6 +435,7 @@ img {
 
 .portfolio-link {
   display: block;
+  transition: box-shadow var(--transition-duration-and-function);
 }
 .portfolio-item-content {
   padding: 32px 16px;
@@ -462,4 +487,69 @@ img {
   letter-spacing: 0.02em;
   color: var(--main-color);
   margin-bottom: 16px;
+}
+.portfolio-list-img {
+  position: relative;
+  overflow: hidden;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  background-color: var(--primary-brand);
+  color: var(--light);
+  overflow: auto;
+  transform: translateY(100%);
+  transition: transform var(--transition-duration-and-function);
+}
+.portfolio-link:hover .overlay,
+.portfolio-link:focus .overlay {
+  transform: translateY(0%);
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 47, 66, 0.4);
+  transition: opacity var(--transition-duration-and-function),
+    visibility var(--transition-duration-and-function);
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 408px;
+  height: 584px;
+  background-color: var(--modal-color);
+}
+.modal-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding-left: 0;
+  padding-right: 0;
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
